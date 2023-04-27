@@ -1,0 +1,45 @@
+<div class="pageadjust" *ngIf="isRestaurentlogin(); else elseblockname">
+    
+    <div class="formdiv">
+        <a (click)="back()"><span class="glyphicon glyphicon-arrow-left"></span>Back</a>
+        <div class="update">
+            <h3 align="center">EDIT ITEM</h3>
+            <h4 [hidden]="showmsg1" align="center"
+                style="color: white; background-color:green; width:100%;padding:6px; "> <b>FOOD UPDATED SUCCESSFUL</b>
+            </h4>
+            <form>
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-6 left-form">
+                            <div>
+                                <img src="{{this.productobj.producturl}}" height="100" width="150">
+                            </div>
+                            <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectImage($event)"
+                                required>
+                            <div style="color: green;"><button (click)="upload()">Upload</button>{{checking}}<br />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 right-form">
+                            <input type="text" placeholder="Food Name" name="productname"
+                                [(ngModel)]="productobj.productname" disabled><br />
+
+                            <input type="number" placeholder="Price" name="productprice"
+                                [(ngModel)]="productobj.productprice" required><br />
+                            <textarea name="productdescription" form="messageform" cols="30" rows="7"
+                                placeholder="Description of Food" [(ngModel)]="productobj.productdescription"
+                                required></textarea>
+                            <button (click)="update()">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>

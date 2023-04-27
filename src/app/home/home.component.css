@@ -1,0 +1,202 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+}
+.pageadjust{
+    width: 100%;
+    height: 87%;
+    position: fixed;
+    top: 7.2%;
+    overflow-y: auto;
+}
+.home{
+  padding: 1rem 7%;
+  background: url(../../assets/images/background.png);
+  min-height: 100vh;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main-home{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-top: 150px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.home-inner-content{
+  flex: 1 1 45rem;
+}
+.home-image{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  
+}
+.home-image img{
+  width: 100%;
+  position: absolute;
+  transform: translate(0%, -40%);
+  animation: mymove 5s infinite ease-in-out;
+}
+@keyframes mymove {
+  0%   {top: 0px;}
+  50%   {top: 15px;}
+  75%   {top: 10px;}
+  100%   {top: 0px;}
+}
+.home-text-content{
+  padding: 0 8rem;
+}
+.home-text-content h1{
+  font-size: 45px;
+  color: #e58f00;
+}
+.home-text-content p{
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  line-height: 25px;
+}
+.home-text-content a{
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid orange;
+  border-radius: 10px;
+  font-size: 18px;
+ transition: 0.5s;
+ display: inline-block;
+}
+.home-text-content a:hover{
+  transform: scale(1.1);
+  background: var(--btn-color);
+  border: 1px solid white;
+  background-color: orange;
+  text-decoration: none;
+}
+
+.about{
+  padding: 2rem 7%;
+  background: #1d1d23;
+}
+.main-about{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  
+}
+.about-content{
+  flex: 1 1 45rem;
+}
+.about-inner-content{
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.about-content .about-inner-content img{
+  width: 80%;
+  margin-left: 100px;
+}
+.about-text-content{
+  padding: 0 4rem;
+}
+.about-text-content h1{
+  color: #e58f00;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+.about-text-content p{
+  color: white;
+  font-size: 1.5rem;
+  line-height: 35px;
+}
+
+
+.quality{
+  padding: 4rem 7%;
+  background-image: linear-gradient(60.34deg, white 52.45%, orange 52.45%);
+}
+.main-quality{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.main-inner-quality{
+  flex: 1 1 45rem;
+}
+.quality-content{
+  padding: 0 4rem;
+}
+.quality-content h1{
+  color: orange;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+.quality-content p{
+  color: #1d1d23;
+  font-size: 1.5rem;
+  line-height: 30px;
+}
+.qulity-image{
+  width: 100%;
+}
+.qulity-image img{
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.enjoy-our-food{
+  padding: 2rem 7%;
+  background: url(../../assets/images/enjoye.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.food-main-content{
+  width: 40%;
+  border: 4px solid white;
+  padding: 2rem;
+}
+.food-main-content h1{
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  padding: 1rem 0;
+}
+.food-main-content p{
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem 0;
+  line-height: 30px;
+}
+
+
+
+
+
+
+
+
+
+

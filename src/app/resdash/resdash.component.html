@@ -1,0 +1,9 @@
+
+<div class="pageadjust">
+    <div *ngIf="isReslogin(); else elseblockname" style="height:100%;overflow:auto">
+    <p>resdash works!</p>
+    </div>
+    <ng-template #elseblockname>
+        <app-pagenotfound></app-pagenotfound>
+      </ng-template>
+</div>

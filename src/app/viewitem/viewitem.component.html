@@ -1,0 +1,105 @@
+<div class="pageadjust">
+<div  *ngIf="isRestaurentlogin();else elseblockname" style="height:100%;overflow:auto">
+<div *ngIf="isActive;else elseactiveblock">
+<h3 align="center">View All Item</h3>
+<div align="center">
+    
+    <input type="text" id="myInput" [(ngModel)]="searchText" 
+      placeholder="Search for FOOD NAME .." title="Type in a name">
+      
+    
+  </div>
+<input type="checkbox" id="show2">
+<div  class="show_scroll">
+<table align="center">
+    <thead>
+        <tr>
+            <th>SL NO.</th>
+            <th>FOOD NAME </th>
+            <th>IMAGE</th>
+            <th>PRICE</th>
+            <th>DESCRIPTION</th>
+            <th>SELLER NAME</th>
+            <th>ORDER DETAILS</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+        </tr>
+    </thead>
+
+    <tbody *ngIf="nodatafound;else nodataelse">
+        <tr *ngFor="let foodobj of foodarr|filter:searchText;index as i">
+            <td>{{i+1}}</td>
+            <td>{{foodobj.productname}}</td>
+            <td><img src="{{foodobj.producturl}}" height="70" width="130"></td>
+            <td>{{foodobj.productprice|currency:"INR"}}</td>
+            <td>{{foodobj.productdescription}}</td>
+            <td>{{foodobj.resname}}</td>
+            <td><label for="show2"><a id="view-btn" (click)="viewUserOrder(foodobj)">View Order</a></label></td>
+            <td><a id="edit-btn" (click)="edit(foodobj)">Edit</a></td>
+            <td><a id="delete-btn" (click)="delete(foodobj)">Delete</a></td>
+            
+        </tr>
+    </tbody>
+    <ng-template #nodataelse>
+        <tbody>
+          <tr>
+            <td colspan="12"> NO DATA FOUND</td>
+          </tr>
+        </tbody>
+        
+      </ng-template>
+
+</table>
+</div>
+<div align="center" class="order-show">
+    <label class="fa" for="show2">X</label>
+    <h3>User Details OF {{foodname}} Order</h3>
+    <div class="show_scroll1">
+        <table>
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>ORDER ID</th>
+                    <th>ORDER DATE</th>
+                    <th>ORDER TIME</th>
+                    <th>USER NAME</th>
+                    <th>USER EMAIL</th>
+
+
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL PRICE</th>
+                    <th>ORDER STATUS</th>
+                </tr>
+            </thead>
+
+            <tbody *ngIf="nodatafound2;else nodataelse">
+                <tr *ngFor="let odobj of orderarr;index as i ">
+                    <td>{{i+1}}</td>
+                    <td>{{odobj.productorderid}}</td>
+                    <td>{{odobj.orderdate}}</td>
+                    <td>{{odobj.ordertime}}</td>
+                    <td>{{odobj.username}}</td>
+                    <td>{{odobj.useremail}}</td>
+                    <td>{{odobj.productprice|currency:"INR"}}</td>
+                    <td>{{odobj.productquantity}}</td>
+                    <td>{{odobj.producttotalprice|currency:"INR"}}</td>
+                    <td *ngIf="odobj.orderstatus; else orderstatusblock">Order Placed</td>
+                    <ng-template #orderstatusblock>
+                        <td> Order Canceled</td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
+<ng-template #elseactiveblock>
+    <app-inactivepage></app-inactivepage>
+</ng-template>
+</div>

@@ -1,0 +1,83 @@
+<div class="pageadjust">
+<div *ngIf="isRestaurentlogin(); else elseblockname">
+<div *ngIf="isActive;else elseactiveblock">
+
+    <div id="adminlogindiv">
+        <h3 align="center">ADD ITEM</h3>
+        <div align="center">
+            <h4 [hidden]="showmsg1" align="center" style="color: white; background-color:green; width:100%;padding:6px; "> <b>FOOD ADDED SUCCESSFUL</b></h4>
+        <h4 [hidden]="showmsg2" align="center" style="color: white; background-color:red; width:100%;padding:6px; "> <b>FOOD ALREADY ADDED</b></h4>
+    
+        </div>
+        
+        <hr>
+        
+        <form>
+            <div class="mb-3">
+             <input type="text" name="productname" class="form-control" placeholder="Enter name of the food" [(ngModel)]="imageobj.productname" required >
+            </div>
+    
+            <div class="mb-3" align="center">
+                <img src="{{this.imageobj.producturl}}" height="100" width="150">
+                <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectImage($event)" required>
+                    
+            </div>
+            <div class="mb-3" align="center" style="color: green;">
+                <button (click)="upload()" id="filebutton" class="btn" style="background-color: blue; color:white;">Upload</button>{{checking}}
+    
+            </div>
+            
+            <div class="mb-3">
+                <input type="number" name="productprice" class="form-control" placeholder="Enter price of the food" [(ngModel)]="imageobj.productprice" required >
+               </div>
+    
+               <div class="mb-3">
+                <textarea name="productdescription"  class="form-control"cols="30" rows="5" placeholder="Description of Food" [(ngModel)]="imageobj.productdescription" required></textarea>
+    
+               </div>
+    
+               <button (click)="submit()"id="uploadbutton" class="btn btn-success btn-lg">Submit</button>
+    
+        </form>
+    </div>
+   
+    <!-- <div class="update">
+        
+        <h3 align="center">ADD ITEM</h3>
+        <h4 [hidden]="showmsg1" align="center" style="color: white; background-color:green; width:100%;padding:6px; "> <b>FOOD ADDED SUCCESSFUL</b></h4>
+        <h4 [hidden]="showmsg2" align="center" style="color: white; background-color:red; width:100%;padding:6px; "> <b>FOOD ALREADY ADDED</b></h4>
+        <form>
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-6 left-form">
+                        <div>
+                            <img src="{{this.imageobj.producturl}}" height="100" width="150">
+                        </div>
+                        <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectImage($event)" required>
+                        <div style="color: green;"><button (click)="upload()">Upload</button>{{checking}}<br /></div>
+                    </div>
+
+                    <div class="col-sm-6 right-form">
+                        <input type="text" placeholder="Food Name" name="productname"
+                            [(ngModel)]="imageobj.productname" required><br />
+
+                        <input type="number" placeholder="Price" name="productprice"
+                            [(ngModel)]="imageobj.productprice" required><br />
+                        <textarea name="productdescription" form="messageform" cols="30" rows="7" placeholder="Description of Food" [(ngModel)]="imageobj.productdescription" required></textarea>
+                        <button (click)="submit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div> -->
+</div>
+</div>
+</div>
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
+<ng-template #elseactiveblock>
+    <app-inactivepage></app-inactivepage>
+</ng-template>

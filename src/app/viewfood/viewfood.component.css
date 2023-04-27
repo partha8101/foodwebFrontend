@@ -1,0 +1,59 @@
+.pageadjust{
+    width: 100%;
+    height: 87%;
+    position: fixed;
+    top: 7.2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.child-div{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#divleft{
+    float: left;
+    width: 30%;
+    height: 100%;
+}
+#divleft img{
+    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    transform: translate(2%,-50%);
+}
+#divright{
+    float: right;
+    width: 65%;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-43%);
+}
+
+#divright h4{
+    font-size: 30px;
+    
+    font-weight: bold;
+}
+#divright p{
+    font-size: 18px;
+    
+}
+#divright button{
+    text-align: center;
+    font-size: large;
+    margin-top: -15px;
+    width:95%;
+    height: 50px;
+}
+.downdiv{
+    margin-top: 8%;
+}
+.downdiv p{
+    margin-top: -2%;
+}

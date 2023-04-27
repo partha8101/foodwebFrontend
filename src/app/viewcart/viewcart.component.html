@@ -1,0 +1,60 @@
+<div class="pageadjust">
+<div *ngIf="isUserlogin();else elseblockname" style="height:100%;overflow:auto">
+  <h3 align="center">View Your Cart Details</h3>
+  <div class="show_scroll">
+    <table align="center">
+        <thead>
+          <tr>
+            
+            <th>FOOD NAME </th>
+            <th>IMAGE</th>
+            <th>PRICE</th>
+            <th>SELLER NAME</th>
+            <th>QUANTITY</th>
+            <th>TOTAL PRICE</th>
+            <th>REMOVE</th>
+            <th>BUY</th>
+            
+          </tr>
+        </thead>
+      
+        <tbody id="myTable" *ngIf="nodatafound;else nodataelse">
+          <tr *ngFor="let cobj of cartarr">
+            
+            <td>{{cobj.productname}}</td>
+            <td><img src="{{cobj.producturl}}" height="70" width="130"></td>
+            <td>{{cobj.productprice|currency:"INR"}}</td>
+            <td>{{cobj.resname}}</td>
+            
+            <td>
+              <select class="form-control"  name="productquantity" id="productquantity" [(ngModel)]="cobj.productquantity">
+                <option >1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </td>
+            <td>{{cobj.productprice*cobj.productquantity|currency:"INR"}}</td>
+            <td><a id="remove-btn" (click)="remove(cobj)">Remove</a></td>
+            <td><a id="order-btn" (click)="buy(cobj)">Buy</a></td>
+            <!-- <td><button  id="edit-btn" (click)="remove(cobj)"><label>Remove</label></button></td>
+            <td><button  id="order-btn" (click)="buy(cobj)"><label>Buy</label></button></td> -->
+            
+          </tr>
+        </tbody>
+        <ng-template #nodataelse>
+          <tbody>
+            <tr>
+              <td colspan="12"> NO DATA FOUND</td>
+            </tr>
+          </tbody>
+          
+        </ng-template>
+      
+      </table>
+  </div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
+</div>

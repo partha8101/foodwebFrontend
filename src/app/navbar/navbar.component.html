@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand logo" [routerLink]="'/'">FoodWEB</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active" *ngIf="isAdminlogin()&&isUserlogin()&&isRestaurentlogin()"><a [routerLink]="'/'">Home</a></li>
+          
+        
+        <li *ngIf="!isUserlogin()" class="display-name"><a><span ></span> Hi, {{username}}</a></li>
+        <li *ngIf="!isAdminlogin()" class="display-name"><a><span ></span> Hi, {{adminname}}</a></li>
+        <li *ngIf="!isRestaurentlogin()" class="display-name"><a><span ></span> Hi, {{resname}}</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isAdminlogin()&&isUserlogin()&&isRestaurentlogin()"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="'/userreg'">User SignUp</a></li>
+            <li><a [routerLink]="'/restaurentreg'">Restaurent SignUp</a></li>
+          </ul>
+        </li>
+        <li *ngIf="isAdminlogin()&&isUserlogin()&&isRestaurentlogin()"><a [routerLink]="'/login'"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li *ngIf="isAdminlogin()&&isUserlogin()&&isRestaurentlogin()"><a [routerLink]="'/contactus'"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a></li>
+
+        
+
+        <li *ngIf="!isUserlogin()"><a [routerLink]="'/userdash'"><span ></span> Dashboard</a></li>
+        <li *ngIf="!isUserlogin()"><a [routerLink]="'/viewcart'"><span ></span> View Cart</a></li>
+        <li *ngIf="!isUserlogin()"><a [routerLink]="'/vieworder'"><span ></span> View Order</a></li>
+        <li *ngIf="!isUserlogin()"><a [routerLink]="'/usereditpro'"><span ></span> Update Profile</a></li>
+        <li *ngIf="!isUserlogin()" (click)="userlogout()" style="cursor: pointer;"><a><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+        <li *ngIf="!isRestaurentlogin()"><a [routerLink]="'/viewitem'"><span ></span> Dashboard</a></li>
+        <li *ngIf="!isRestaurentlogin()"><a [routerLink]="'/additem'"><span ></span> Add Item</a></li>
+        <li *ngIf="!isRestaurentlogin()"><a [routerLink]="'/restaurenteditpass'"><span ></span> Update Password</a></li>
+        <li *ngIf="!isRestaurentlogin()" (click)="reslogout()" style="cursor: pointer;"><a ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        
+
+        <!-- <li *ngIf="!isAdminlogin()"><a [routerLink]="'/additem'"><span ></span> Add Item</a></li> -->
+        <!--<li *ngIf="!isAdminlogin()"><a [routerLink]="'/viewitem'"><span ></span> View Item</a></li> -->
+        <li *ngIf="!isAdminlogin()"><a [routerLink]="'/viewalluser'"><span ></span> View User</a></li>
+        <li *ngIf="!isAdminlogin()"><a [routerLink]="'/viewallres'"><span ></span> View Restaurent</a></li>
+        <li *ngIf="!isAdminlogin()"><a [routerLink]="'/admineditpass'"><span ></span> Update Password</a></li>
+        <li *ngIf="!isAdminlogin()" (click)="adminlogout()" style="cursor: pointer;"><a ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  

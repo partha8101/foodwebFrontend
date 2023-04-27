@@ -1,0 +1,45 @@
+<div class="pageadjust">
+    <div *ngIf="IsRestaurentLogin();else elseblockname">
+        <div *ngIf="isActive;else elseactiveblock">
+            <div class="container">
+                <div class="row">
+                    <div class="col1">
+                        <h3>Hey! {{resobj.resname}}</h3>
+                        
+                        <h4>For Update Your Profile</h4>
+                        <a [routerLink]="'/usereditpro'"><button disabled>Update Profile</button></a>
+                        <!--<p>For user login.<a [routerLink]="'/userlogin'">click here</a></p> -->
+                    </div>
+            
+                    <div class="col2">
+                        <h3>Password Update</h3>
+                        <div style="height: 30px;" [hidden]="!showmsg1">
+                            <h4 style="background-color:red;">WRONG OLD PASSWORD</h4>
+                        </div>
+                        <div style="height: 30px; " [hidden]="!showmsg2">
+                            <h4 style="background-color:green;">PASSWORD UPDATE SUCCESSFUL</h4>
+                        </div>
+                        <form id="messageform" (ngSubmit)="onSubmit()">
+                            <div><input type="password" name="resoldpass" placeholder="Enter Old Password"
+                                [(ngModel)]="resobj.respass" required></div>
+                            <div><input type="password" name="resnewpass" placeholder="Enter New Password"
+                                    [(ngModel)]="resobj.resnewpass" required></div>
+                            <div><input type="password" name="resconfirmpass" placeholder="Enter New Password"
+                                    [(ngModel)]="resobj.resconfirmpass" required></div>
+                            <p style="color: red; float:right; margin-right: 10px;" [hidden]="flag1">Password didn't match</p>
+                            <div><button type="submit">Submit</button></div>
+            
+                        </form>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
+<ng-template #elseactiveblock>
+    <app-inactivepage></app-inactivepage>
+  </ng-template>

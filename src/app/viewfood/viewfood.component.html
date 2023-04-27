@@ -1,0 +1,45 @@
+<div class="pageadjust">
+<div *ngIf="isUserlogin();else elseblockname">
+<!--
+<h4>{{foodobj.productname}}</h4>
+<img width="150" height="100" src="{{foodobj.producturl}}">
+<h4>{{foodobj.productprice}}</h4>
+<h4>{{foodobj.productdescription}}</h4>
+<h4>Seller Name(Admin):{{foodobj.adminname}}</h4>
+<h4>Seller Address(Admin):{{foodobj.adminaddress}}</h4>
+<button (click)="addcart()">Add to Cart</button>
+<p style="color: red;" [hidden]="flag">item is already added</p>-->
+
+    <div class=" child-div">
+        
+        <div  id="divleft">
+            <img src="{{this.foodobj.producturl}}" height="250" width="250">
+        
+        </div>
+        
+        <div  id="divright">
+            <h4>{{this.foodobj.productname}}</h4>
+            <p><b>Price: {{this.foodobj.productprice|currency:"INR"}}</b></p>
+            <div class="downdiv">
+            <p><b>Description:</b> {{this.foodobj.productdescription}}</p>
+            <p><b>Restaurent Name:</b> {{foodobj.resname}}</p>
+            <p><b>Restaurent Address:</b> {{foodobj.resaddress}}</p>
+            
+            </div>
+            <br>
+            <button *ngIf="flag; else elsebtnblock" class="btn btn-danger" [routerLink]="'/viewcart'">Go to cart</button>
+            <ng-template #elsebtnblock>
+            <button  class="btn btn-danger" (click)="addcart()">Add to cart</button>
+            </ng-template>
+            <p style="color: red;" [hidden]="!flag">Item is already added</p>
+        </div>
+        
+
+
+</div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
+</div>

@@ -1,0 +1,46 @@
+<div class="pageadjust">
+  <div *ngIf="isUserlogin(); else elseblockname" style="height:100%;overflow:auto">
+
+    <div align="center">
+      <input type="text" id="myInput" [(ngModel)]="searchText" placeholder="Search for FOOD NAME .."
+        title="Type in a name">
+    </div>
+
+    <ul *ngIf="nodatafound;else nodataelse">
+      <li *ngFor="let foodobj of foodarr|filter:searchText">
+        <a (click)="view(foodobj)">
+          <img src="{{foodobj.producturl}}">
+          <div class="content">
+            <div class="name">
+              {{foodobj.productname}}
+            </div>
+            <div class="price">
+              <span>
+                {{foodobj.productprice | currency:'INR'}}
+              </span>
+            </div>
+            <div class="sellername">
+              <span>Restaurent Name:</span>
+              {{foodobj.resname}}
+            </div>
+            <div class="address">
+              <span>Restaurent Address:</span>
+              {{foodobj.resaddress}}
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <ng-template #nodataelse>
+    <ul>
+      
+        <a style="justify-content: center;align-items: center;color: #e72929;text-decoration: none;">NO DATA FOUND</a>
+      
+    </ul>
+  </ng-template>
+
+  <ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+  </ng-template>
+</div>

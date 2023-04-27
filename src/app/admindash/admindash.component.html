@@ -1,0 +1,7 @@
+<div *ngIf="isAdminlogin(); else elseblockname">
+<p>admindash works!</p>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>

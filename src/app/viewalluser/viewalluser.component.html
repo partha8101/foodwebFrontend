@@ -1,0 +1,111 @@
+<div class="pageadjust">
+<div *ngIf="isAdminlogin(); else elseblockname"  style="height:100%;overflow:auto">
+<h3 align="center">View Employee</h3>
+<div align="center">
+  <input type="text" id="myInput" [(ngModel)]="searchText" onkeyup="myFunction()"
+    placeholder="Search for NAME or EMAIL or MOBILE NO.." title="Type in a name">
+</div>
+<input type="checkbox" id="show">
+<input type="checkbox" id="show2">
+<div class="show_scroll">
+<table align="center">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>MOBILE NO.</th>
+      <th>ADDRESS</th>
+      <th>VIEW ORDER</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+    </tr>
+  </thead>
+
+  <tbody id="myTable" *ngIf="nodatafound;else nodataelse">
+    <tr *ngFor="let userobj of alluserlist | filter:searchText">
+      <td>{{userobj.username}}</td>
+      <td>{{userobj.useremail}}</td>
+      <td>{{userobj.usermobile}}</td>
+      <td id="address">{{userobj.useraddress}}</td>
+      <td><label for="show2"><a id="view-btn" (click)="viewOrder(userobj)">View Order</a></label></td>
+      <td><label for="show"><a (click)="edit(userobj)" id="edit-btn">Edit</a></label></td>
+      <td><a (click)="delete(userobj)" id="delete-btn">Delete</a></td>
+      
+    </tr>
+  </tbody>
+
+  <ng-template #nodataelse>
+    <tbody>
+      <tr>
+        <td colspan="12"> NO DATA FOUND</td>
+      </tr>
+    </tbody>
+  </ng-template>
+
+</table>
+</div>
+
+<div align="center" class="update">
+  <label class="fa" for="show">X</label>
+  <h3>Profile Update</h3>
+  <h4 [hidden]="showmsg" style="color: white; background-color:green; width:60%;padding:8px"> <b>UPDATE SUCCESSFUL</b>
+  </h4>
+  <form>
+
+    <div><input type="text" name="username" [(ngModel)]="newuserobj.username"></div>
+    <div><input type="email" name="useremail" [(ngModel)]="newuserobj.useremail" disabled></div>
+    <div><input type="text" name="usermobile" [(ngModel)]="newuserobj.usermobile" disabled=""></div>
+    <textarea type="messagebox" name="useraddress" [(ngModel)]="newuserobj.useraddress" ></textarea>
+    <div><button (click)="submit()">Submit</button></div>
+  </form>
+</div>
+
+
+<div align="center" class="order-show">
+  <label class="fa" for="show2">X</label>
+  <h3>Order Details OF {{orderusername}}</h3>
+  <div class="show_scroll1">
+  <table>
+    <thead>
+      <tr>
+        <th>SL NO</th>
+        <th>ORDER ID</th>
+        <th>ORDER DATE</th>
+        <th>ORDER TIME</th>
+        <th>FOOD NAME</th>
+        <th>IMAGE</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>TOTAL PRICE</th>
+        <th>DELIVERY ADDRESS</th>
+        <th>ORDER STATUS</th>
+      </tr>
+    </thead>
+  
+    <tbody id="myTable" *ngIf="nodatafound2;else nodataelse">
+      <tr *ngFor="let odobj of orderarr;index as i ">
+        <td>{{i+1}}</td>
+        <td>{{odobj.productorderid}}</td>
+        <td>{{odobj.orderdate}}</td>
+        <td>{{odobj.ordertime}}</td>
+        <td>{{odobj.productname}}</td>
+        <td><img src="{{odobj.producturl}}" height="70" width="130" style="border-radius: 10px;padding:5px"></td>
+        <td>{{odobj.productprice|currency:"INR"}}</td>
+        <td>{{odobj.productquantity}}</td>
+        <td>{{odobj.producttotalprice|currency:"INR"}}</td>
+        <td>{{odobj.deliveryaddress}}</td>
+        <td *ngIf="odobj.orderstatus; else orderstatusblock">Order Placed</td>
+        <ng-template #orderstatusblock>
+            <td> Order Canceled</td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+<ng-template #elseblockname>
+<app-pagenotfound></app-pagenotfound>
+</ng-template>
+</div>

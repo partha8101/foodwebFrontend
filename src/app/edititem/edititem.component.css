@@ -1,0 +1,120 @@
+.pageadjust{
+    width: 100%;
+    height: 87%;
+    position: fixed;
+    top: 7.2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.add-item{
+    background-color: rgb(6, 202, 6);
+    color: black;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-style: initial;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    left: 50%;
+    margin-top: 20px;
+    padding: auto;
+    transform: translate(-50%,-50%);
+    border: 2px solid black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+img{
+    border: 2px solid black;
+}
+.add-item :hover{
+    color: rgb(6, 202, 6);
+    background-color: white;
+}
+.update {
+    margin-top: 8px;
+    border: 2px solid white;
+    background-color: white;
+    box-shadow: 5px 7px 8px 1px black;
+    height: 95%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.formdiv{
+    left: 50%;
+    top: 48%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    width: 40%;
+    height: 57%;
+}
+.formdiv a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+a span{
+    margin-right: 5px;
+}
+h3{
+    margin-top: 30px;
+    margin-right: 50px;
+    color:  white;
+    
+    font-size: 30px;
+    border-bottom: 3px solid black;
+    background-color: black;
+}
+.update .left-form button{
+    margin-bottom: 10px;
+    background-color: blue;
+    color: white;
+    padding: 6px 10px;
+    border: 2px blue;
+    border-radius: 5px;
+}
+.update h3{
+    margin: 5px;
+}
+.update .fa{
+    position: absolute;
+    right: 1%;
+    top: 0;
+    cursor: pointer;
+}
+
+.container-fluid{
+    margin-top: 25px;
+}
+
+.left-form button{
+    margin-top: 5px;
+}
+.left-form{
+    margin-top: 30px;
+    
+}
+.left-form p{
+    color: green;
+}
+
+.right-form textarea{
+    border: none;
+    border: 2px solid black;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+.right-form button{
+    padding: 4px 10px;
+    color: white;
+    background-color: green;
+    border: 2px solid green;
+    border-radius: 5px;
+}
+.right-form input{
+    border: none;
+    border-bottom: 2px solid black;
+    width: 100%;
+    padding: 2px;
+    margin: 0 0 20px 0;
+}
+

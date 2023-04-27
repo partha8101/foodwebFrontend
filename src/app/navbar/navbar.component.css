@@ -1,0 +1,19 @@
+.logo{
+    color: black;
+    font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.navbar{
+    width: 100%;
+    height: 7.2%;
+    position: fixed;
+    z-index: 1;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.display-name a{
+    color: blue;
+    font-size: 20px;
+    font-style: oblique;
+    background-color: #e3f2fd;
+}

@@ -1,0 +1,87 @@
+.pageadjust{
+    width: 100%;
+    height: 87%;
+    position: fixed;
+    top: 7.2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 325px;
+    width: 700px;
+    
+    box-shadow: 5px 7px 8px 1px black;
+}
+.container .row .col1{
+    background-color: black;
+    height: 324px;
+    width: 34%;
+    float: left;
+    color: white;
+    border-radius: 0px 150px 300px 0px;
+    padding: 15px;
+    text-align: center;
+}
+.container .row .col2{
+    text-align: center;
+}
+#messageform{
+    margin-top: 1%;
+    text-align: center;
+}
+.col2 h3{
+    margin-top: 30px;
+    text-align: center;
+    color:  black;
+
+    font-size: 30px;
+}
+.container .row .col2 h4{
+    margin-top: 10px;
+    margin-right: 50px;
+    color:  white;
+
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.container input{
+    border: none;
+    border-bottom: 2px solid black;
+    width: 50%;
+    height: 30px;
+    padding: 2px;
+    margin: 10px;
+}
+.container .half-input input{
+    width: 25%;
+}
+h4{
+    padding-top: 5px;
+    font-size: 15px;
+}
+.container .pass-div input{ 
+    width: 25%;
+}
+.container button{
+    padding: 8px 16px;
+    color: white;
+    background-color: green;
+    border: 2px solid green;
+    border-radius: 5px;
+    
+}
+.col2 button{
+    float: left;
+    margin-left: 100px;
+}
+.container .col1 h3{
+    margin-top: 40%;
+}
+.container .col1 button{
+    margin-top: 15px;
+}

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col1">
+            <h3>Don't have an Account</h3>
+            <a [routerLink]="'/userreg'"><button>Signup</button></a>
+            <p >For admin login.<a [routerLink]="'/adminlogin'">click here</a></p>
+        </div>
+
+        <div class="col2">
+            <h3>User Login</h3>
+            <div style="height: 30px;">
+                <h4 [hidden]="flag">Invalic UID or Password</h4>
+            </div>
+            <form id="messageform" (ngSubmit)="onSubmit()">
+                <div><input type="email" name="useremail" placeholder="Email ID" [(ngModel)]="userobj.useremail" required></div>
+                <div><input type="password" name="userpass" placeholder="Password" [(ngModel)]="userobj.userpass" required></div>
+                <div><button type="submit">Submit</button></div>
+
+            </form>
+        </div>
+
+    </div>
+</div>

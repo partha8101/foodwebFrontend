@@ -1,0 +1,31 @@
+<div class="container" *ngIf="isUserlogin()">
+    <div class="row">
+        <div class="col1">
+            <h3>Hey {{username}}</h3>
+
+            <br />
+            <h4>For Update Your Password</h4>
+             <a [routerLink]="'/usereditpass'"><button>Update Password</button></a>
+        </div>
+
+        <div class="col2">
+            <h3>User Profile Update</h3>
+            <!-- <div style="height: 30px;" [hidden]="!showmsg1"><h4 style="background-color:red;">EMAIL OR MOBILE NO IS AlREADY USED</h4></div>-->
+        <div style="height: 30px; " [hidden]="showmsg" ><h4 style="background-color:green;">PROFILE UPDATE SUCCESSFUL</h4></div> 
+            <form id="messageform" (ngSubmit)="onSubmit()">
+
+                <div><input type="text" name="username" placeholder="Name" [(ngModel)]="userobj.username" required></div>
+                <div class="half-input"><input type="text" name="useremail" placeholder="Email" [(ngModel)]="userobj.useremail" disabled>
+                <input type="text" name="usermobile" placeholder="Mobile No." [(ngModel)]="userobj.usermobile" disabled></div>
+                <textarea name="address" form="messageform" cols="30" rows="7" placeholder="Address" [(ngModel)]="userobj.useraddress" required></textarea>    
+                <div><button>Submit</button></div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>

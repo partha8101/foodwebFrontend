@@ -1,0 +1,62 @@
+<div class="pageadjust">
+<div *ngIf="isUserlogin();else elseblockname" style="height:100%;overflow:auto">
+<h3 align="center">View Your Order Details</h3>
+<div  class="order-div">
+<table align="center">
+    <thead>
+      <tr>
+        <th>SL NO.</th>
+        <th>ORDER ID </th>
+        <th>ORDER DATE</th>
+        <th>ORDER TIME </th>
+        <th>FOOD NAME </th>
+        <th>IMAGE</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>TOTAL PRICE</th>
+        <th>SELLER NAME </th>
+        <th>DELIVERY ADDRESS</th>
+        <th>ORDER STATUS</th>
+        <th>ORDER CANCEL</th>
+      </tr>
+    </thead>
+  
+    <tbody id="myTable" *ngIf="nodatafound;else nodataelse">
+      <tr *ngFor="let fobj of orderarr;index as i" >
+        <td>{{i+1}}</td>
+        <td>{{fobj.productorderid}}</td>
+        <td>{{fobj.orderdate}}</td>
+        <td>{{fobj.ordertime}}</td>
+        <td>{{fobj.productname}}</td>
+        <td><img src="{{fobj.producturl}}" height="70" width="130"></td>
+        <td>{{fobj.productprice|currency:"INR"}}</td>
+        <td>{{fobj.productquantity}}</td>
+        <td>{{fobj.producttotalprice|currency:"INR"}}</td>
+        <td>{{fobj.resname}}</td>
+        <td>{{fobj.deliveryaddress}}</td>
+        <td *ngIf="fobj.orderstatus; else orderstatusblock">Order Placed</td>
+        <ng-template #orderstatusblock>
+            <td> Order Canceled</td>
+          </ng-template>
+        <td *ngIf="fobj.orderstatus; else orderstatusblock"><a id="cancel-btn" (click)="cancel(fobj)">Cancel</a></td>
+        
+      </tr>
+    </tbody>
+    <ng-template #nodataelse>
+      <tbody>
+        <tr>
+          <td colspan="13"> NO DATA FOUND</td>
+        </tr>
+      </tbody>
+      
+    </ng-template>
+  
+  </table>
+
+</div>
+</div>
+
+<ng-template #elseblockname>
+  <app-pagenotfound></app-pagenotfound>
+</ng-template>
+</div>

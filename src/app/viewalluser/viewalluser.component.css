@@ -1,0 +1,186 @@
+.pageadjust{
+    width: 100%;
+    height: 87%;
+    position: fixed;
+    top: 7.2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+table{
+    width: 100%;
+    max-height: 100%;
+    text-align: center;
+    
+}
+
+.show_scroll{
+    
+    width: 75%;
+    height: 70%;
+    overflow: auto;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 5px 7px 13px 0px black;
+    
+}
+.show_scroll td{
+    padding: 10px;
+}
+.show_scroll1{
+    
+    width: 95%;
+    height: 80%;
+    overflow: auto;
+    position: relative;
+}
+.order-show table{
+    width: 100%;
+    display: block;
+}
+
+table thead th{
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+table tbody td{
+    background-color: #444;
+    color: white;
+    border-bottom: 2px solid wheat;
+}
+table #address{
+    width: 25%;
+}
+.order-show table td{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+td a{
+    padding: 6px 10px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    font-size: medium;
+}
+#edit-btn{
+    background-color: orangered;
+    color: aliceblue;
+}
+#delete-btn{
+    background-color: red;
+    color: aliceblue;
+}
+#view-btn{
+    background-color: blue;
+    color: aliceblue;
+}
+
+
+.update {
+    left: 50%;
+    top: 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    border: 2px solid white;
+    background-color: white;
+    box-shadow: 5px 7px 8px 1px black;
+    width: 40%;
+    height: 55%;
+    display: none;
+}
+#show:checked ~ .update{
+    display: block;
+}
+.order-show {
+    left: 50%;
+    top: 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+    border: 2px solid white;
+    background-color: white;
+    box-shadow: 5px 7px 8px 1px black;
+    width: 90%;
+    height: 90%;
+    display: none;
+    overflow: hidden;
+}
+
+#show2:checked ~ .order-show{
+    display: block;
+}
+.update h3{
+    color:  black;
+    
+    font-size: 30px;
+}
+.update h4{
+    
+    color:  white;
+
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+}
+.update input{
+    margin:5px;
+    width: 50%;
+}
+
+textarea{
+    margin: 5px;
+    width: 70%;
+}
+.update button{
+    margin-bottom: 10px;
+    background-color: blue;
+    color: white;
+    padding: 6px 10px;
+    border: 2px blue;
+    border-radius: 5px;
+}
+.update h3{
+    margin: 5px;
+}
+.update .fa{
+    position: absolute;
+    right: 1%;
+    top: 0;
+    cursor: pointer;
+}
+.order-show .fa{
+    position: absolute;
+    right: 1%;
+    top: 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+h3{
+    margin-top: 30px;
+    margin-right: 50px;
+    color:  black;
+    
+    font-size: 30px;
+}
+
+#myInput {
+    
+    width: 30%;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 8px 20px 8px 20px;
+    border: 2px solid black;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }

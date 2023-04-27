@@ -1,0 +1,37 @@
+<div class="container" *ngIf="isUserlogin()">
+    <div class="row">
+        <div class="col1">
+            <h3>Hey! {{userobj.username}}</h3>
+            <br />
+            <h4>For Update Your Profile</h4>
+            <a [routerLink]="'/usereditpro'"><button>Update Profile</button></a>
+            <!--<p>For user login.<a [routerLink]="'/userlogin'">click here</a></p> -->
+        </div>
+
+        <div class="col2">
+            <h3>User Password Update</h3>
+            <div style="height: 30px;" [hidden]="!showmsg1">
+                <h4 style="background-color:red;">WRONG OLD PASSWORD</h4>
+            </div>
+            <div style="height: 30px; " [hidden]="!showmsg2">
+                <h4 style="background-color:green;">PASSWORD UPDATE SUCCESSFUL</h4>
+            </div>
+            <form id="messageform" (ngSubmit)="onSubmit()">
+                <div><input type="password" name="useroldpass" placeholder="Enter Old Password"
+                        [(ngModel)]="userobj.userpass" required></div>
+                <div><input type="password" name="usernewpass" placeholder="Enter New Password"
+                        [(ngModel)]="userobj.usernewpass" required></div>
+                <div><input type="password" name="userconfirmpass" placeholder="Enter New Password"
+                        [(ngModel)]="userobj.userconfirmpass" required></div>
+                <p style="color: red; float:right; margin-right: 10px;" [hidden]="flag1">Password didn't match</p>
+                <div><button type="submit">Submit</button></div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #elseblockname>
+    <app-pagenotfound></app-pagenotfound>
+</ng-template>
