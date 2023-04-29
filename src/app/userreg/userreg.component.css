@@ -63,12 +63,21 @@
     border: none;
     border-bottom: 2px solid black;
     width: 50%;
-    height: 30px;
+    height: 34px;
     padding: 2px;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.col2 .half-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.col2 .half-input p{
+    margin: -10px 0 -10px 11%;
 }
 .container .half-input input{
-    width: 25%;
+    width: 80%;
 }
 h4{
     padding-top: 5px;
@@ -78,6 +87,7 @@ h4{
     width: 25%;
 }
 .container button{
+    margin-top: 10px;
     padding: 8px 16px;
     color: white;
     background-color: green;
@@ -89,4 +99,24 @@ h4{
 }
 .container .col1 button{
     margin-top: 15px;
+}
+.col2 p{
+    font-size: 14px;
+    font-family: none;
+    text-align: start;
+    margin: -10px 0 -10px 42%;
+    color: red;
+}
+.col2 .validation-wrong-msg{
+    margin: -10px 0 -10px 69%;
+}
+.col2 .validation-correct-msg{
+    margin: -10px 0 -10px 69%;
+    color: green;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

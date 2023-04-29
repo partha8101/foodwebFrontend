@@ -9,18 +9,51 @@
 
         <div class="col2">
             <h3>User Registration</h3>
-            <div style="height: 30px;" [hidden]="!showmsg1"><h4 style="background-color:red;">EMAIL OR MOBILE NO IS AlREADY USED</h4></div>
-        <div style="height: 30px; " [hidden]="!showmsg2" ><h4 style="background-color:green;">REGISTRATION SUCCESSFUL</h4></div>
+            <div style="height: 30px;" [hidden]="!showmsg1">
+                <h4 style="background-color:red;">EMAIL OR MOBILE NO IS AlREADY USED</h4>
+            </div>
+            <div style="height: 30px; " [hidden]="!showmsg2">
+                <h4 style="background-color:green;">REGISTRATION SUCCESSFUL</h4>
+            </div>
             <form id="messageform" (ngSubmit)="onSubmit()">
 
-                <div><input type="text" name="username" placeholder="Name" [(ngModel)]="userobj.username" required></div>
-                <div class="half-input"><input type="text" name="useremail" placeholder="Email" [(ngModel)]="userobj.useremail" required>
-                <input type="text" name="usermobile" placeholder="Mobile No." [(ngModel)]="userobj.usermobile" required></div>
-                <textarea name="address" form="messageform" cols="30" rows="7" placeholder="Address" [(ngModel)]="userobj.useraddress" required></textarea>    
-                <div class="half-input"><input type="password" name="userpass" placeholder="Password" [(ngModel)]="userobj.userpass" required>
-                <input type="password" name="userconfirmpass" placeholder=" Confirm Password" [(ngModel)]="userobj.userconfirmpass" required></div>
-                <p style="color: red; float:right; margin-right: 10px;" [hidden]="flag1">Password didn't match</p>
-                
+                <div>
+                    <input type="text" name="username" placeholder="Name" [(ngModel)]="userobj.username" required
+                        (keyup)="nameValidate()" (blur)="nameValidate()">
+                    <p>{{nameError}}</p>
+                </div>
+                <div class="half-input">
+                    <div>
+                        <input type="email" name="useremail" placeholder="Email" [(ngModel)]="userobj.useremail"
+                            (keyup)="emailValidate()" (blur)="emailValidate()" required>
+                        <p>{{emailError}}</p>
+                    </div>
+                    <div>
+                        <input type="number" name="usermobile" placeholder="Mobile No." [(ngModel)]="userobj.usermobile"
+                            (keyup)="mobileValidate()" (blur)="mobileValidate()" required>
+                        <p>{{mobileError}}</p>
+                    </div>
+                </div>
+                <textarea name="address" form="messageform" cols="30" rows="7" placeholder="Address"
+                    [(ngModel)]="userobj.useraddress" (keyup)="addressValidate()" (blur)="addressValidate()" required></textarea>
+                    <p>{{addressError}}</p>
+                <div class="half-input">
+                    <div>
+                        <input type="password" name="userpass" placeholder="Password" [(ngModel)]="userobj.userpass"
+                            (keyup)="passwordValidator()" (blur)="passwordValidator()"
+                            (keyup)="confirmPasswordValidator()" required>
+                        <p>{{passwordError}}</p>
+                        </div>
+                    <div>
+                        <input type="password" name="userconfirmpass" placeholder=" Confirm Password"
+                            [(ngModel)]="userobj.userconfirmpass" (keyup)="confirmPasswordValidator()" (blur)="confirmPasswordValidator()" required>
+                        <p class="validation-wrong-msg" *ngIf="passwordNotMatch" >Not Matched</p>
+                        <p class="validation-correct-msg" *ngIf="passwordMatch" >Password Matched</p>
+                        
+                    </div>
+
+                </div>
+
                 <div><button>Submit</button></div>
 
             </form>
