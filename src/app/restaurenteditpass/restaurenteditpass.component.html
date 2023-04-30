@@ -7,7 +7,7 @@
                         <h3>Hey! {{resobj.resname}}</h3>
                         
                         <h4>For Update Your Profile</h4>
-                        <a [routerLink]="'/usereditpro'"><button disabled>Update Profile</button></a>
+                        <a ><button disabled><s>Update Profile</s></button></a>
                         <!--<p>For user login.<a [routerLink]="'/userlogin'">click here</a></p> -->
                     </div>
             
@@ -21,12 +21,17 @@
                         </div>
                         <form id="messageform" (ngSubmit)="onSubmit()">
                             <div><input type="password" name="resoldpass" placeholder="Enter Old Password"
-                                [(ngModel)]="resobj.respass" required></div>
+                                [(ngModel)]="resobj.respass" (keyup)="oldPassValidate()" (blur)="oldPassValidate()"  required>
+                                <p>{{oldPassError}}</p>
+                            </div>
                             <div><input type="password" name="resnewpass" placeholder="Enter New Password"
-                                    [(ngModel)]="resobj.resnewpass" required></div>
+                                    [(ngModel)]="resobj.resnewpass" (keyup)="newPassValidate()" (keyup)="confirmPassValidate()" (blur)="newPassValidate()" required>
+                                <p>{{newPassError}}</p>
+                                </div>
                             <div><input type="password" name="resconfirmpass" placeholder="Enter New Password"
-                                    [(ngModel)]="resobj.resconfirmpass" required></div>
-                            <p style="color: red; float:right; margin-right: 10px;" [hidden]="flag1">Password didn't match</p>
+                                    [(ngModel)]="resobj.resconfirmpass" (keyup)="confirmPassValidate()" (blur)="confirmPassValidate()" required>
+                                    <p class="validation-wrong-msg" *ngIf="passwordNotMatch" >Not Matched</p>
+                                    <p class="validation-correct-msg" style="color:green" *ngIf="passwordMatch" >Password Matched</p></div>
                             <div><button type="submit">Submit</button></div>
             
                         </form>

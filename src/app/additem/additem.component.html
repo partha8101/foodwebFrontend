@@ -14,23 +14,28 @@
         
         <form>
             <div class="mb-3">
-             <input type="text" name="productname" class="form-control" placeholder="Enter name of the food" [(ngModel)]="imageobj.productname" required >
+             <input type="text" name="productname" class="form-control" placeholder="Enter name of the food" [(ngModel)]="foodobj.productname" 
+              (keyup)="nameValidate()" (blur)="nameValidate()" required >
+             <p>{{nameError}}</p>
             </div>
     
             <div class="mb-3" align="center">
-                <img src="{{this.imageobj.producturl}}" height="100" width="150">
+                <img src="{{this.foodobj.producturl}}" height="100" width="150">
                 <input type="file" ng2FileSelect [uploader]="uploader" (click)="upload()" (change)="selectImage($event)" required>
                     
             </div>
             
             
             <div class="mb-3">
-                <input type="number" name="productprice" class="form-control" placeholder="Enter price of the food" [(ngModel)]="imageobj.productprice" required >
+                <input type="number" name="productprice" class="form-control" placeholder="Enter price of the food" [(ngModel)]="foodobj.productprice" 
+                (keyup)="priceValidate()" (blur)="priceValidate()" required >
+                <p>{{priceError}}</p>
                </div>
     
                <div class="mb-3">
-                <textarea name="productdescription"  class="form-control"cols="30" rows="5" placeholder="Description of Food" [(ngModel)]="imageobj.productdescription" required></textarea>
-    
+                <textarea name="productdescription"  class="form-control"cols="30" rows="5" placeholder="Description of Food" [(ngModel)]="foodobj.productdescription" 
+                   (keyup)="descriptionValidate()" (blur)="descriptionValidate()" required></textarea>
+                <p>{{descriptionError}}</p>
                </div>
     
                <button (click)="submit()"id="uploadbutton" class="btn btn-success btn-lg">Submit</button>
@@ -49,7 +54,7 @@
                 <div class="row">
                     <div class="col-sm-6 left-form">
                         <div>
-                            <img src="{{this.imageobj.producturl}}" height="100" width="150">
+                            <img src="{{this.foodobj.producturl}}" height="100" width="150">
                         </div>
                         <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectImage($event)" required>
                         <div style="color: green;"><button (click)="upload()">Upload</button>{{checking}}<br /></div>
@@ -57,11 +62,11 @@
 
                     <div class="col-sm-6 right-form">
                         <input type="text" placeholder="Food Name" name="productname"
-                            [(ngModel)]="imageobj.productname" required><br />
+                            [(ngModel)]="foodobj.productname" required><br />
 
                         <input type="number" placeholder="Price" name="productprice"
-                            [(ngModel)]="imageobj.productprice" required><br />
-                        <textarea name="productdescription" form="messageform" cols="30" rows="7" placeholder="Description of Food" [(ngModel)]="imageobj.productdescription" required></textarea>
+                            [(ngModel)]="foodobj.productprice" required><br />
+                        <textarea name="productdescription" form="messageform" cols="30" rows="7" placeholder="Description of Food" [(ngModel)]="foodobj.productdescription" required></textarea>
                         <button (click)="submit()">Submit</button>
                     </div>
                 </div>

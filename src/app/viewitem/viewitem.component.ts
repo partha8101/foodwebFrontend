@@ -53,7 +53,7 @@ export class ViewitemComponent implements OnInit {
   }
   foodname:string="";
   viewUserOrder(foodobj:IFood){
-    this.foodname=foodobj.productname;
+    this.foodname=foodobj.productname as string;
     this.resServiceObj.userOrderUsingPost(foodobj)
       .subscribe((res:any)=>{
         if(res.length>0){

@@ -15,10 +15,9 @@
                             <div>
                                 <img src="{{this.productobj.producturl}}" height="100" width="150">
                             </div>
-                            <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectImage($event)"
+                            <input type="file" ng2FileSelect [uploader]="uploader" (click)="upload()" (change)="selectImage($event)"
                                 required>
-                            <div style="color: green;"><button (click)="upload()">Upload</button>{{checking}}<br />
-                            </div>
+                            
                         </div>
 
                         <div class="col-sm-6 right-form">

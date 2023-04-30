@@ -10,12 +10,39 @@ import { RestaurentService } from '../_services/restaurent.service';
 })
 export class RestaurentloginComponent implements OnInit {
 
-  constructor(public resobj:IRestaurent,public resServiceObj:RestaurentService,public router:Router) { }
+  constructor(public resServiceObj:RestaurentService,public router:Router) { }
+  resobj:IRestaurent={};
   flag:boolean=true;
+  emailError:string="";
+  passwordError:string="";
   ngOnInit(): void {
+    this.resobj.resemail="";
+    this.resobj.respass="";
+  }
+  emailValidate(){
+    if(this.resobj.resemail==="")
+            {
+                this.emailError="The input field is required";
+            }
+            else{
+                this.emailError="";
+            }
+  }
+  passwordValidate(){
+    if(this.resobj.respass==="")
+            {
+                this.passwordError="The input field is required";
+            }
+            else{
+                this.passwordError="";
+            }
   }
   onSubmit(){
-    this.resServiceObj.RestaurentLoginUsingPost(this.resobj)
+    if(this.resobj.resemail=="" ||this.resobj.respass==""){
+      alert("Fill all the input field");
+    }
+    else{
+      this.resServiceObj.RestaurentLoginUsingPost(this.resobj)
       .subscribe((res:any)=>{
         console.log(res.length);
         if(res.length>0){
@@ -34,6 +61,8 @@ export class RestaurentloginComponent implements OnInit {
         }
         
       })
+    }
+    
   }
 
 }

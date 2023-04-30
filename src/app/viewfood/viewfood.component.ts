@@ -34,7 +34,7 @@ export class ViewfoodComponent implements OnInit {
     this.cartobj.resname=this.foodobj.resname
     this.cartobj.productname=this.foodobj.productname;
     this.cartobj.producturl=this.foodobj.producturl;
-    this.cartobj.productprice=this.foodobj.productprice;
+    this.cartobj.productprice=this.foodobj.productprice as number;
     this.cartobj.productquantity=1;
 
     this.userserviceobj.addCartUsingPost(this.cartobj)

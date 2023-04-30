@@ -14,11 +14,19 @@ export class RestaurenteditpassComponent implements OnInit {
   showmsg1:boolean=false;
   showmsg2:boolean=false;
   flag1:boolean=true;
+  oldPassError:string="";
+  newPassError:string="";
+
+  passwordMatch:boolean=false;
+  passwordNotMatch:boolean=false;
   resemail:any=sessionStorage.getItem("resemail");
   robj:any=sessionStorage.getItem("resobj");
   ngOnInit(): void {
+
     this.resobj=JSON.parse(this.robj);
     this.resobj.respass="";
+    this.resobj.resnewpass="";
+    this.resobj.resconfirmpass="";
     this.resServiceObj.isResActive(this.resemail)
     .subscribe((res:any)=>{
       this.isActive=res.active;
@@ -28,9 +36,46 @@ export class RestaurenteditpassComponent implements OnInit {
     return (sessionStorage.getItem("restype")==="RESTAURENT");
   }
 
+  oldPassValidate(){
+    if(this.resobj.respass===""){
+      this.oldPassError="The input field is required";
+    }
+    else{
+      this.oldPassError="";
+    }
+  }
+  newPassValidate(){
+    if(this.resobj.resnewpass===""){
+      this.newPassError="The input field is required";
+    }
+    else if((this.resobj.resnewpass as string)?.length<6){
+      this.newPassError="length sould be min 6";
+    }
+    else{
+      this.newPassError="";
+    }
+  }
+
+  confirmPassValidate(){
+    if(this.resobj.resconfirmpass===this.resobj.resnewpass ){
+      this.passwordMatch=true;
+      this.passwordNotMatch=false;
+  }
+  else{
+      this.passwordMatch=false;
+      this.passwordNotMatch=true;
+  }
+  }
+
   onSubmit(){
-    if(this.resobj.resconfirmpass==this.resobj.resnewpass){
-    this.resServiceObj.RestaurentLoginUsingPost(this.resobj)
+    if(this.resobj.respass?.length==0 || this.resobj.resnewpass?.length==0 || this.resobj.resconfirmpass?.length==0){
+      alert("Fill all the input field");
+    }
+    else if(this.passwordNotMatch==true || this.oldPassError!=="" ||this.newPassError!==""){
+      alert("Invalid field. Please fill correctly");
+    }
+    else{
+      this.resServiceObj.RestaurentLoginUsingPost(this.resobj)
       .subscribe((res:any)=>{
         if(res.length>0){
           this.resServiceObj.ResUpadtePassUsingPut(this.resobj)
@@ -49,9 +94,6 @@ export class RestaurenteditpassComponent implements OnInit {
           this.resobj.resnewpass="";
         }
       })
-    }
-    else{
-      this.flag1=false;
     }
   }
 

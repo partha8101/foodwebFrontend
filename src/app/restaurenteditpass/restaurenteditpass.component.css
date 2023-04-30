@@ -76,6 +76,7 @@ h4{
     
 }
 .col2 button{
+    margin-top: 10px;
     float: left;
     margin-left: 100px;
 }
@@ -83,5 +84,13 @@ h4{
     margin-top: 40%;
 }
 .container .col1 button{
+    cursor: pointer;
     margin-top: 15px;
+}
+.col2 p{
+    font-size: 14px;
+    font-family: none;
+    text-align: start;
+    margin: -10px 0 -10px 42%;
+    color: red;
 }

@@ -62,7 +62,7 @@ export class ViewcartComponent implements OnInit {
     this.orderobj.resemail=cobj.resemail;
     this.orderobj.resname=cobj.resname;
     this.orderobj.productquantity=cobj.productquantity;
-    this.orderobj.producttotalprice=cobj.productprice*cobj.productquantity;
+    this.orderobj.producttotalprice=(cobj.productprice as number)*(cobj.productquantity as number);
     this.orderobj.orderstatus=true;
     this.userserviceobj.buyItemUsingPost(this.orderobj)
       .subscribe((res:any)=>{

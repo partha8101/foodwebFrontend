@@ -12,8 +12,14 @@
                 <h4 [hidden]="flag">Invalic UID or Password</h4>
             </div>
             <form id="messageform" (ngSubmit)="onSubmit()">
-                <div><input type="text" name="adminemail"  placeholder="Enter Email" [(ngModel)]="adminobj.adminemail" required></div>
-                <div><input type="password" name="adminpass" placeholder="Password" [(ngModel)]="adminobj.adminpass" required></div>
+                <div>
+                    <input type="text" name="adminemail"  placeholder="Enter Email" [(ngModel)]="adminobj.adminemail" (keyup)="emailValidate()" (blur)="emailValidate()" required>
+                    <p>{{emailError}}</p>
+                </div>
+                <div>
+                    <input type="password" name="adminpass" placeholder="Password" [(ngModel)]="adminobj.adminpass" (keyup)="passwordValidate()" (blur)="passwordValidate()" required>
+                    <p>{{passwordError}}</p>
+                </div>
                 <div><button type="submit">Submit</button></div>
 
             </form>

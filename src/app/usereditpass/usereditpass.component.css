@@ -47,7 +47,13 @@
     font-size: 15px;
     padding: 5px;
 }
-
+.col2 p{
+    font-size: 14px;
+    font-family: none;
+    text-align: start;
+    margin: -10px 0 -10px 42%;
+    color: red;
+}
 .container input{
     border: none;
     border-bottom: 2px solid black;
@@ -67,6 +73,7 @@ h4{
     width: 25%;
 }
 .container button{
+    margin-top: 10px;
     padding: 8px 16px;
     color: white;
     background-color: green;

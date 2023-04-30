@@ -13,8 +13,14 @@
                     <h4 [hidden]="flag">Invalic UID or Password</h4>
                 </div>
                 <form id="messageform" (ngSubmit)="onSubmit()">
-                    <div><input type="email" name="useremail" placeholder="Email ID" [(ngModel)]="resobj.resemail" required></div>
-                    <div><input type="password" name="respass" placeholder="Password" [(ngModel)]="resobj.respass" required></div>
+                    <div>
+                        <input type="email" name="useremail" placeholder="Email ID" [(ngModel)]="resobj.resemail" (keyup)="emailValidate()" (blur)="emailValidate()" required>
+                        <p>{{emailError}}</p>
+                    </div>
+                    <div>
+                        <input type="password" name="respass" placeholder="Password" [(ngModel)]="resobj.respass" (keyup)="passwordValidate()" (blur)="passwordValidate()" required>
+                        <p>{{passwordError}}</p>
+                    </div>
                     <div><button type="submit">Submit</button></div>
     
                 </form>

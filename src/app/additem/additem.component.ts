@@ -20,7 +20,7 @@ export class AdditemComponent implements OnInit {
 
   uploader!: FileUploader;
   constructor(private cloudinary: Cloudinary,private http: HttpClient,
-    public imageobj:IFood,public adminserviceobj:AdminService,
+    public foodobj:IFood,public adminserviceobj:AdminService,
     public router:Router,public resServiceObj:RestaurentService,
     public resobj:IRestaurent) {}
   foodarr:IFood[]=[];
@@ -29,7 +29,14 @@ export class AdditemComponent implements OnInit {
     resname:any=sessionStorage.getItem("resname");
     robj:any=sessionStorage.getItem("resobj");
     resaddress=JSON.parse(this.robj).resaddress;
+    nameError:string="";
+    priceError:string="";
+    descriptionError:string="";
   ngOnInit(): void {
+    this.foodobj.productname="";
+    this.foodobj.productprice="";
+    this.foodobj.productdescription="";
+
     this.resobj=JSON.parse(this.robj);
     this.resServiceObj.isResActive(this.resemail)
       .subscribe((res:any)=>{
@@ -66,11 +73,36 @@ export class AdditemComponent implements OnInit {
       
       return { fileItem, form };
     };
-    this.imageobj.producturl="../../assets/images/dish.png";
+    this.foodobj.producturl="../../assets/images/dish.png";
   }
   showmsg1:boolean=true;
   showmsg2:boolean=true;
   
+  nameValidate(){
+    if(this.foodobj.productname===""){
+      this.nameError="The input field is required"
+    }
+    else{
+      this.nameError="";
+    }
+  }
+  priceValidate(){
+    console.log(this.foodobj.productprice);
+    if(this.foodobj.productprice==="" || this.foodobj.productprice===null){
+      this.priceError="The input field is required"
+    }
+    else{
+      this.priceError="";
+    }
+  }
+  descriptionValidate(){
+    if(this.foodobj.productdescription===""){
+      this.descriptionError="The input field is required"
+    }
+    else{
+      this.descriptionError="";
+    }
+  }
 
   file:any;
   selectImage(event:any){
@@ -87,42 +119,48 @@ export class AdditemComponent implements OnInit {
     this.uploader.response
       .subscribe( (res)=>{
         
-        this.imageobj.producturl=JSON.parse(res).url;
-        console.log(this.imageobj.producturl);
+        this.foodobj.producturl=JSON.parse(res).url;
+        console.log(this.foodobj.producturl);
         this.checking="Uploaded!!"
       });
   }
    submit(){
-        this.imageobj.resname=this.resname;
-        this.imageobj.resemail=this.resemail;
-        this.imageobj.resaddress=this.resaddress;
-        this.resServiceObj.uploaditem(this.imageobj)
-      .subscribe((res:any)=>{
-        if(res.length>0){
-        console.log("Item Added");
-        this.imageobj.productdescription="";
-        this.imageobj.productname="";
-        this.imageobj.productprice=0;
-        this.imageobj.producturl="";
+    if(this.foodobj.productname==="" || this.foodobj.productdescription==="" || this.foodobj.productprice==="" ||this.foodobj.productprice===null){
+      alert("Fill all the input field");
+    }
+    else{
+      this.foodobj.resname=this.resname;
+      this.foodobj.resemail=this.resemail;
+      this.foodobj.resaddress=this.resaddress;
+      this.resServiceObj.uploaditem(this.foodobj)
+    .subscribe((res:any)=>{
+      if(res.length>0){
+      console.log("Item Added");
+      this.foodobj.productdescription="";
+      this.foodobj.productname="";
+      this.foodobj.productprice=0;
+      this.foodobj.producturl="";
+      
+      this.checking="";
+      this.showmsg1=false;
+      this.showmsg2=true;
+      setTimeout(() => 
+      {
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);})
+      },
+      2000);
+    }
+    else{
+      this.showmsg2=false;
+      this.showmsg1=true;
+      console.log("Item Already Added");
+    }
+      
+    })
+    }
         
-        this.checking="";
-        this.showmsg1=false;
-        this.showmsg2=true;
-        setTimeout(() => 
-        {
-          let currentUrl = this.router.url;
-          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-          this.router.navigate([currentUrl]);})
-        },
-        2000);
-      }
-      else{
-        this.showmsg2=false;
-        this.showmsg1=true;
-        console.log("Item Already Added");
-      }
-        
-      })
    }
   
   isRestaurentlogin():boolean{
