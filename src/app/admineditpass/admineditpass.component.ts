@@ -13,10 +13,20 @@ export class AdmineditpassComponent implements OnInit {
   
   showmsg1:boolean=false;
   showmsg2:boolean=false;
+  oldPassError:string="";
+  newPassError:string="";
+  passwordMatch:boolean=false;
+  passwordNotMatch:boolean=false;
+
+
   flag1:boolean=true;
   
   obj:any=sessionStorage.getItem("adminobj");
   ngOnInit(): void {
+    this.adminobj.adminpass="";
+    this.adminobj.adminnewpass="";
+    this.adminobj.adminconfirmpass="";
+
     let newadminobj = JSON.parse(this.obj);
     console.log(newadminobj);
     this.adminobj.adminname = newadminobj.adminname;
@@ -24,8 +34,45 @@ export class AdmineditpassComponent implements OnInit {
     //this.adminobj.emppass = newadminobj.emppass;
   }
 
+  oldPassValidate(){
+    if(this.adminobj.adminpass===""){
+      this.oldPassError="The input field is required";
+    }
+    else{
+      this.oldPassError="";
+    }
+  }
+  newPassValidate(){
+    if(this.adminobj.adminnewpass===""){
+      this.newPassError="The input field is required";
+    }
+    else if((this.adminobj.adminnewpass as string)?.length<6){
+      this.newPassError="length sould be min 6";
+    }
+    else{
+      this.newPassError="";
+    }
+  }
+
+  confirmPassValidate(){
+    if(this.adminobj.adminconfirmpass===this.adminobj.adminnewpass ){
+      this.passwordMatch=true;
+      this.passwordNotMatch=false;
+  }
+  else{
+      this.passwordMatch=false;
+      this.passwordNotMatch=true;
+  }
+  }
+
   onSubmit(){
-    if(this.adminobj.adminconfirmpass==this.adminobj.adminnewpass){
+    if(this.adminobj.adminpass?.length==0 || this.adminobj.adminnewpass?.length==0 || this.adminobj.adminconfirmpass?.length==0){
+      alert("Fill all the input field");
+    }
+    else if(this.passwordNotMatch==true || this.oldPassError!=="" ||this.newPassError!==""){
+      alert("Invalid field. Please fill correctly");
+    }
+    else{
       this.adminserviceobj.AdminLoginUsingPost(this.adminobj)
       .subscribe((res:any)=>{
         if(res.length>0){
@@ -45,9 +92,6 @@ export class AdmineditpassComponent implements OnInit {
           this.adminobj.adminnewpass="";
         }
       })
-    }
-    else{
-      this.flag1=false;
     }
     
       

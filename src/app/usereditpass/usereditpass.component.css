@@ -51,7 +51,7 @@
     font-size: 14px;
     font-family: none;
     text-align: start;
-    margin: -10px 0 -10px 42%;
+    margin: -13px 0 -10px 42%;
     color: red;
 }
 .container input{
@@ -60,7 +60,7 @@
     width: 50%;
     height: 30px;
     padding: 2px;
-    margin: 10px;
+    margin: 15px;
 }
 .container .half-input input{
     width: 25%;

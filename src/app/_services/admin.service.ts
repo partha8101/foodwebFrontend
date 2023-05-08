@@ -51,7 +51,11 @@ export class AdminService {
     return this.httpclientobj.get(url);
   }
 
-  
+  viewOrderOfResUsingGet(resobj:IRestaurent){
+    let url=this._URL+"/vieworderofres/"+resobj.resemail;
+    return this.httpclientobj.get(url);
+  }
+
   ViewRestaurentUsingGet(){
     let url=this._URL+"/viewres";
     return this.httpclientobj.get(url);

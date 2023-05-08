@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { IRestaurent } from '../_models/restaurent';
 import { AdminService } from '../_services/admin.service';
+import { IOrder } from '../_models/order';
 
 @Component({
   selector: 'app-viewallrestaurent',
@@ -17,6 +18,8 @@ export class ViewallrestaurentComponent implements OnInit {
   searchText:any;
   nodatafound:boolean=true;
   nodatafound2:boolean=true;
+  orderarr:IOrder[]=[];
+  orderresname:string="";
   boolarr=[
     {
     id:"true",
@@ -69,7 +72,22 @@ export class ViewallrestaurentComponent implements OnInit {
       this.showmsg=false;
     })
   }
-  
+  viewOrder(resobj:IRestaurent){
+    this.orderresname=resobj.resname as string;
+    this.adminserviceobj.viewOrderOfResUsingGet(resobj)
+      .subscribe((res:any)=>{
+        if(res.length>0){
+          console.log(res)
+          this.orderarr=res;
+          this.nodatafound2=true;
+        }
+        else{
+          this.nodatafound2=false;
+        }
+        
+      })
+  }
+
   onChange(event:any){
     console.log((event.target as HTMLInputElement).value);
     this.newresobj.active=JSON.parse((event.target as HTMLInputElement).value);

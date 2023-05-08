@@ -19,12 +19,20 @@
             </div>
             <form id="messageform" (ngSubmit)="onSubmit()">
                 <div><input type="password" name="adminoldpass" placeholder="Enter Old Password"
-                        [(ngModel)]="adminobj.adminpass" required></div>
+                        [(ngModel)]="adminobj.adminpass" (keyup)="oldPassValidate()" (blur)="oldPassValidate()" required>
+                    <p>{{oldPassError}}</p>
+                    </div>
                 <div><input type="password" name="adminnewpass" placeholder="Enter New Password"
-                        [(ngModel)]="adminobj.adminnewpass" required></div>
-                <div><input type="password" name="adminnewpass" placeholder="Confirm New Password"
-                        [(ngModel)]="adminobj.adminconfirmpass" required></div>
-                        <p style="color: red; float:right; margin-right: 10px;" [hidden]="flag1">Password didn't match</p>
+                        [(ngModel)]="adminobj.adminnewpass" (keyup)="confirmPassValidate()" (keyup)="newPassValidate()" (blur)="newPassValidate()" required>
+                    <p>{{newPassError}}</p>
+                    </div>
+                <div><input type="password" name="adminconfirmpass" placeholder="Confirm New Password"
+                        [(ngModel)]="adminobj.adminconfirmpass" (keyup)="confirmPassValidate()" (blur)="confirmPassValidate()"  required>
+
+                        <p class="validation-wrong-msg" *ngIf="passwordNotMatch" >Not Matched</p>
+                                    <p class="validation-correct-msg" style="color:green" *ngIf="passwordMatch" >Password Matched</p>
+                    </div>
+                        
                         
                 <div align="center"><button type="submit">Submit</button></div>
 

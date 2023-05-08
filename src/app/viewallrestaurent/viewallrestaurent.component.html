@@ -39,7 +39,7 @@
             </select>
             
           </td> -->
-          <td><label for="show2"><a id="view-btn" >View Order</a></label></td>
+          <td><label for="show2"><a id="view-btn" (click)="viewOrder(resobj)">View Order</a></label></td>
           <td><label for="show"><a (click)="edit(resobj)" id="edit-btn">Edit</a></label></td>
           <td><a (click)="delete(resobj)" id="delete-btn">Delete</a></td>
           
@@ -51,7 +51,7 @@
       <ng-template #nodataelse>
         <tbody>
           <tr>
-            <td colspan="12"> NO DATA FOUND</td>
+            <td colspan="15"> NO DATA FOUND</td>
           </tr>
         </tbody>
       </ng-template>
@@ -82,9 +82,9 @@
     </div>
     
     
-    <!-- <div align="center" class="order-show">
+    <div align="center" class="order-show">
       <label class="fa" for="show2">X</label>
-      <h3>Order Details OF {{orderusername}}</h3>
+      <h3>Order Details OF {{orderresname}}</h3>
       <div class="show_scroll1">
       <table>
         <thead>
@@ -93,6 +93,8 @@
             <th>ORDER ID</th>
             <th>ORDER DATE</th>
             <th>ORDER TIME</th>
+            <th>CUSTOMER NAME</th>
+            <th>CUSTOMER EMAIL</th>
             <th>FOOD NAME</th>
             <th>IMAGE</th>
             <th>PRICE</th>
@@ -109,6 +111,8 @@
             <td>{{odobj.productorderid}}</td>
             <td>{{odobj.orderdate}}</td>
             <td>{{odobj.ordertime}}</td>
+            <td>{{odobj.username}}</td>
+            <td>{{odobj.useremail}}</td>
             <td>{{odobj.productname}}</td>
             <td><img src="{{odobj.producturl}}" height="70" width="130" style="border-radius: 10px;padding:5px"></td>
             <td>{{odobj.productprice|currency:"INR"}}</td>
@@ -123,7 +127,7 @@
         </tbody>
       </table>
       </div>
-    </div> -->
+    </div>
     </div>
     
     <ng-template #elseblockname>

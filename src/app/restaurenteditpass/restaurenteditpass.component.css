@@ -55,7 +55,7 @@
     width: 50%;
     height: 30px;
     padding: 2px;
-    margin: 10px;
+    margin: 15px;
 }
 .container .half-input input{
     width: 25%;
@@ -76,7 +76,7 @@ h4{
     
 }
 .col2 button{
-    margin-top: 10px;
+    margin-top: 8px;
     float: left;
     margin-left: 100px;
 }
@@ -85,12 +85,11 @@ h4{
 }
 .container .col1 button{
     cursor: pointer;
-    margin-top: 15px;
 }
 .col2 p{
     font-size: 14px;
     font-family: none;
     text-align: start;
-    margin: -10px 0 -10px 42%;
+    margin: -13px 0 -8px 42%;
     color: red;
 }

@@ -54,9 +54,10 @@
     width: 50%;
     height: 30px;
     padding: 2px;
-    margin: 12px;
+    margin: 15px;
 }
 .container button{
+    margin-top: 10px;
     padding: 8px 16px;
     color: white;
     background-color: green;
@@ -84,4 +85,11 @@
 @keyframes mover {
     form{ transform: translateY(0px);}
     to{ transform: translateY(-30px);}
+}
+.col2 p{
+    font-size: 14px;
+    font-family: none;
+    text-align: start;
+    margin: -13px 0 -8px 42%;
+    color: red;
 }
